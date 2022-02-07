@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+:root {
+  --header-height: 80px;
+  --footer-height: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.container__header {
+  width: 100%;
+  height: var(--header-height);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav {
+  height: 50px;
+  background: var(--color-2);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav > ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-path {
+  width: 100%;
+  height: 30px;
+  color: initial;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--color-1);
+  display: flex;
+  align-items: center;
+}
+
+.container__footer {
+  width: 100%;
+  min-height: var(--footer-height);
+  font-size: 1.2rem;
+  color: white;
+  background: var(--color-2);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contents {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  display: flex;
+}
+
+.contents > aside {
+  width: 30%;
+  max-width: 300px;
+  min-width: 300px;
+  border-right: 1px solid var(--color-1);
+}
+
+.contents > div {
+  width: 100%;
+}
+
+/* 1150px for Desktops */
+@media screen and (max-width: 1150px) {
+}
+
+/* 992px for laptops */
+@media screen and (max-width: 992px) {
+}
+
+/* 768px for tablets */
+@media screen and (max-width: 768px) {
+}
+
+/* 576px for portrait phones */
+@media screen and (max-width: 576px) {
+}
+
+/* 375px for mobile devices */
+@media screen and (max-width: 375px) {
+}
+
+/* 280px for min mobile devices */
+@media screen and (max-width: 280px) {
 }

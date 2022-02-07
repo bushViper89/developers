@@ -1,13 +1,382 @@
+:root {
+  --color-1: #140f07;
+  --color-2: #0e244c;
+  --color-3: #2c5aaf;
+  --color-4: #5e95fe;
+  --color-5: #a2dcfa;
+  --color-default: #2b3d51;
+  --color-hover: #121920;
+  --color-disabled: silver;
+  --color-readonly: skyblue;
+  --color-success: aquamarine;
+  --color-warning: khaki;
+  --color-error: tomato;
+  --color-border: darkgray;
+  --text-color: #444444;
+  --text-color-reversal: white;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  color: var(--text-color-default);
+}
+
 body {
+  width: 100%;
+  height: 100%;
+  font-size: 1.6rem;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* button default */
+[class^="button"] {
+  height: 30px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background: var(--color-default);
+  padding: 0px 10px;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+[class^="button"]:hover {
+  background: var(--color-hover);
+}
+
+[class^="button"]:disabled,
+[class^="button"].is-disabled {
+  background: var(--color-disabled);
+}
+
+/* <input> : default */
+input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+input + label {
+  font-size: 1.3rem;
+}
+
+input:disabled {
+  color: var(--color-disabled);
+}
+
+textarea,
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"] {
+  height: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 0.3rem;
+}
+
+textarea:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-default);
+}
+
+textarea:read-only,
+input[type="email"]:read-only,
+input[type="password"]:read-only,
+input[type="tel"]:read-only,
+input[type="text"]:read-only {
+  color: var(--color-readonly);
+}
+
+textarea {
+  min-height: 100px;
+  resize: none;
+  padding: 1rem;
+}
+
+/* <input> : checkbox */
+label.checkbox {
+  position: relative;
+  padding-left: 2.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+label.checkbox > input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+label.checkbox > .mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  border: 2px solid var(--color-border);
+  border-radius: 0.3rem;
+}
+
+label.checkbox > .mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  width: 0.7rem;
+  height: 1.2rem;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+label.checkbox:hover > input[type="checkbox"] + .mark {
+  border-color: var(--color-hover);
+}
+
+label.checkbox > input[type="checkbox"]:checked + .mark {
+  border-color: var(--color-default);
+  background-color: var(--color-default);
+}
+
+label.checkbox > input[type="checkbox"]:checked + .mark:after {
+  display: block;
+}
+
+label.checkbox > input[type="checkbox"]:disabled ~ .txt {
+  color: var(--color-disabled);
+}
+
+label.checkbox > input[type="checkbox"]:disabled + .mark {
+  background: var(--color-disabled);
+}
+
+label.checkbox:hover > input[type="checkbox"]:disabled + .mark {
+  border-color: var(--color-disabled);
+}
+
+label.checkbox > input[type="checkbox"]:checked:disabled + .mark {
+  background-color: var(--color-disabled);
+  border-color: var(--color-disabled);
+}
+
+/* <input> : number */
+.custom-number {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.custom-number > input[type="number"]::-webkit-inner-spin-button,
+.custom-number > input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-number > input[type="number"] {
+  -moz-appearance: textfield;
+  width: 50px;
+  height: 30px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.custom-number > [class^="button"] {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.custom-number > [class^="button"]::after {
+  display: block;
+  color: var(--text-color-reversal);
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.custom-number > .button-decrease::after {
+  content: "-";
+  margin-top: -0.3rem;
+}
+
+.custom-number > .button-increase::after {
+  content: "+";
+}
+
+.custom-number > input ~ .valid {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.custom-number > input ~ .valid:after {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 900;
+  top: 0px;
+}
+
+.custom-number > input:valid ~ .valid:after {
+  content: "✓";
+  color: var(--color-success);
+}
+
+.custom-number > input:invalid ~ .valid:after {
+  content: "✖";
+  color: var(--color-error);
+}
+
+/* <input> : radio */
+label.custom-radio {
+  position: relative;
+  padding-left: 2.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+label.custom-radio > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+label.custom-radio > .mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  width: 2rem;
+  border: 3px solid var(--color-border);
+  border-radius: 50%;
+}
+
+label.custom-radio .mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 3px;
+  left: 3px;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: white;
+}
+
+label.custom-radio:hover input[type="radio"] + .mark {
+  border-color: var(--color-hover);
+}
+
+label.custom-radio > input[type="radio"]:checked + .mark {
+  background: var(--color-default);
+  border-color: var(--color-default);
+}
+
+label.custom-radio > input[type="radio"]:checked + .mark:after {
+  display: block;
+}
+
+label.custom-radio > input[type="radio"]:disabled ~ .txt {
+  color: var(--color-disabled);
+}
+
+label.custom-radio > input[type="radio"]:disabled + .mark {
+  background: var(--color-disabled);
+}
+
+label.custom-radio:hover > input[type="radio"]:disabled + .mark {
+  background: var(--color-disabled);
+}
+
+label.custom-radio > input[type="radio"]:checked:disabled + .mark {
+  background: var(--color-disabled);
+}
+
+/* <input> : search */
+.custom-search {
+  display: flex;
+  gap: 10px;
+}
+
+/* air-datepicker-3 customize*/
+.air-datepicker-cell.-current- {
+  color: var(--color-default);
+}
+
+.air-datepicker-cell.-selected- {
+  background: var(--color-default);
+}
+
+.air-datepicker-cell.-selected-.-focus- {
+  background: var(--color-hover);
+}
+
+.air-datepicker-nav--title i {
+  color: var(--color-default);
 }
